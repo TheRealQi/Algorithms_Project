@@ -1,4 +1,4 @@
-from pyamaze.pyamaze import maze, agent, COLOR
+from pyamaze.pyamaze import maze, agent, COLOR, textLabel
 
 
 def DFS(m):
@@ -32,12 +32,12 @@ def DFS(m):
 
 
 if __name__ == '__main__':
-    m = maze(20, 20)
+    m = maze(15, 15)
     m.CreateMaze(loopPercent=20, theme="light")
-    path = DFS(m)
-
-    # Create agent at the start position (bottom-right corner)
-    a = agent(m, m.rows, m.cols, footprints=True, color=COLOR.cyan)
-    m.tracePath({a: path})
+    m._win.title("DFS Maze Solver")
+    fwdPath = DFS(m)
+    a = agent(m, m.rows, m.cols, footprints=True, color=COLOR.cyan, shape='square', filled=True)
+    l = textLabel(m, 'Length of Path', len(fwdPath) + 1)
+    m.tracePath({a: fwdPath})
 
     m.run()

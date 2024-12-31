@@ -36,7 +36,7 @@ def BFS(m):
 
 
 if __name__ == '__main__':
-    m = maze(20, 20)
+    m = maze(15, 15)
     m.CreateMaze(loopPercent=20, theme='light')
     m._win.title("BFS Maze Solver")
     bSearch, bfsPath, fwdPath = BFS(m)
@@ -44,8 +44,8 @@ if __name__ == '__main__':
     b = agent(m, footprints=True, color=COLOR.blue, shape='arrow', filled=False)
     c = agent(m, 1, 1, footprints=True, color=COLOR.green, shape='square', filled=True, goal=(m.rows, m.cols))
     l = textLabel(m, 'Length of Shortest Path', len(fwdPath) + 1)
-    m.tracePath({a: bSearch}, delay=100)
-    m.tracePath({c: bfsPath}, delay=100)
-    m.tracePath({b: fwdPath}, delay=100)
+    m.tracePath({a: bSearch}, delay=30)
+    m.tracePath({c: bfsPath}, delay=30)
+    m.tracePath({b: fwdPath}, delay=30)
 
     m.run()
